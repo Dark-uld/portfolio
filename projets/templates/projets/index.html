@@ -1,0 +1,82 @@
+{% extends 'main.html'%} 
+{% load static %} 
+{% block title %} Portfolio de Pirath - Page d'accueil {% endblock%}
+{% block content %}
+<section class="sect-title" style="background-image: url({% static 'images/background.jpg'%})">
+  <div class="sect-title-cont">
+    <h1>Pirathepan</h1>
+    <p>Développeur Web</p>
+  </div>
+</section>
+<section class="sect-intro" id="aboutme">
+  <div class="sect-intro-title">
+    <div class="sect-intro-imgsec">
+      <img class="sect-intro-img"  src="{% static 'images/avatar.png'%}" />
+    </div>
+    <div class="sect-intro-info">
+      <div>
+        <p>
+          <span class="h4">Nom:</span>
+          <span>Pirathepan Rajeswaran</span>
+        </p>
+        <p>
+          <span class="h4">Profile:</span>
+          <span>Développeur Web</span>
+        </p>
+        <p>
+          <span class="h4">Email:</span>
+          <span>r.pirathepan94@gmail.com</span>
+        </p>
+      </div>
+    </div>
+    <div class="sect-intro-skill">
+      <h3>Skills</h3>
+      {% for skill in skills %}
+        {% if skill.importance %}
+          <p>{{ skill.skill_name }}</p>
+          <div class="progress">
+            <div class="progress-bar" style="width: {{ skill.percentage }}%;" aria-valuenow="{{ skill.percentage }}" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div>
+
+    </div>
+  </div>
+  <div class="sect-intro-desc">
+    <h2>À propos de moi</h2>
+    Après 5 ans en tant qu'opérateur au sein de l'entreprise Euro Pentel, j'ai fait une
+    formation de Développeur Web dans le cadre d'une reconversion. En constant
+    autoformation depuis la fin de la formation, je recherche aujourd'hui une 1ere
+    expérience professionnelle !
+  </div>
+</section>
+<section id="real">
+  <h2>Realisations</h2>
+  <div class="diapo">
+    <div class="elements">
+      {% for projet in projets %}
+      <div class="element" hidden="true">
+        <div class="article">
+          <div class="prj-img-cont">
+            {% for image in projet.image_set.all%}
+            {% if image.url_image %}
+            <img class="prj-img" src="{{ image.url_image }}" />
+            {% endif %}
+            {% endfor %}
+          </div>
+          <div>
+            <h3>{{ projet.title }}</h3>
+            <p>{{ projet.description }}</p>
+            <p>{{ projet.origines }}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <img src="{% static 'images/arrow_back.svg' %}" id="arrow-left"></img>
+    <img src="{% static 'images/arrow_forward.svg' %}" id="arrow-right"></img>
+  </div>
+</section>
+{% endblock content %}

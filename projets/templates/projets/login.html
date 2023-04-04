@@ -1,0 +1,24 @@
+{% extends 'main.html' %} 
+{% load static %}
+{% block content %} 
+<h1>Login</h1>
+<form action="" method="POST" class="">
+    {% csrf_token %}
+    <!-- Input:Username -->
+    <div class="">
+        <label for="formInput#text">Username: </label>
+        <input class="" id="formInput#text" type="text" name="username"
+            placeholder="Enter your username..." />
+    </div>
+
+    <!-- Input:Password -->
+    <div class="">
+        <label for="formInput#password">Password: </label>
+        <input class="" id="formInput#passowrd" type="password" name="password"
+            placeholder="••••••••" />
+    </div>
+    <div class="">
+        <input class="" type="submit" value="Log In" />
+    </div>
+</form>
+{% endblock content %}

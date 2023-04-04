@@ -1,0 +1,281 @@
+/* 
+VARIABLES
+CLASSES PERSONNALISEES
+ELEMENTS 
+HEADER
+
+PAGE ACCUEIL
+PAGE REALISATION
+
+MOBILE VIEW
+*/
+
+/* VARIABLES */
+:root {
+  --color-spa: #151e3f;
+  --color-oxf: #030027;
+  --color-lbl: #a4d3cb;
+  --color-cor: #f1ecce;
+  --color-sun: #eec584;
+}
+* {
+  font-family: 'Ubuntu', 'Open Sans', sans-serif;
+  color:var(--color-cor);
+}
+
+/* CLASSES PERSONNALISEES  */
+.flexrow {
+  display: flex;
+  flex-direction: row;
+}
+
+.flexcol {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ELEMENTS */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+li {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+section{
+  background-color: var(--color-spa);
+  width: 100%;
+}
+
+
+/* HEADER */
+header {
+  width: 90%;
+  height: 50px;
+  padding: 15px 5%;
+  background-color: var(--color-lbl);
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+}
+
+nav {
+  width: 80%;
+  height: 100%;
+}
+
+.nav-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-img {
+  width: 50px;
+  border-radius: 50%;
+}
+.nav-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.nav-btn {
+  padding: 10px 15px;
+  color: var(--color-cor);
+  background-color: var(--color-spa);
+  cursor: pointer;
+}
+
+.nav-btn:hover,
+.nav-btn:focus,
+.nav-btn:active {
+  background-color: var(--color-oxf);
+  transform: scale(1.1);
+}
+
+/* BODY */
+
+.main {
+  /* padding: 50px 5%; */
+  /* max-width: 1200px; */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
+  scrollbar-color: var(--color-sun);
+  scrollbar-width: thin;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.main::-webkit-scrollbar {
+  display: none;
+}
+
+.prj-img-cont{
+   width: 150px;
+   height: 150px;
+   display:flex;
+   justify-content: center;
+   align-items: center;
+}
+.prj-img {
+  max-width: 140px;
+  max-height: 140px;
+}
+/* PAGE ACCUEIL */
+.sect-intro,
+#real {
+  display: flex;
+  flex-flow: row wrap
+}
+
+.sect-title{
+  /* top: 0;
+  left: 0;
+  position: relative; */
+  width: 100%;
+  height: 100%;
+  
+  color: #fff;
+}
+.sect-title-cont{
+  text-align: center;
+  color: #fff;
+  width: 100%;
+  height: 100%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sect-intro{
+  max-width: 1200px;
+  margin: auto 0;
+  padding: 30px 20px;
+}
+.sect-intro-title{
+  width : 40%;
+  display: flex;
+  flex-flow: row wrap
+}
+
+.sect-intro-imgsec{
+  width:25%;
+}
+.sect-intro-img {
+  max-width: 75px;
+  border-radius: 50%;
+}
+.sect-intro-info{
+ width: 75%;
+}
+.h4{
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+.sect-intro-skill{
+  width:100%;
+}
+
+.progress {
+  width: 90%;
+  background-color: #f3f3f3;
+  padding: 3px;
+  border-radius: 5px;
+}
+
+.progress-bar{
+  background-color: var(--color-sun);
+  height: 10px;
+  border-radius: 5px;
+}
+
+.sect-intro-desc{
+  width : 60%
+}
+
+
+.diapo{
+  width: 100%;
+  height: 100%;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  filter: invert(78%) sepia(31%) saturate(646%) hue-rotate(340deg) brightness(107%) contrast(87%);
+  font-size: 3em;
+}
+
+#nav-droite{
+  right: 20px;
+}
+#nav-gauche{
+  left: 20px;
+}
+
+.elements{
+  display: flex;
+  flex-direction: column;
+ /*  height: 300px; */
+  align-items: center;
+}
+
+.element{
+  width: 100%;
+  position: relative;
+}
+
+.article{
+  display: flex;
+  flex-direction: row;
+}
+
+
+.projetLeft{
+  position: absolute;
+  left: 0px;
+}
+
+.projetRight{
+  position: absolute;
+  right:0px;
+}
+
+
+
+/* MOBILE VIEW  */
+@media only screen and (max-width: 768px) {
+  nav {
+    width: 100%;
+    margin: 0 -5%;
+  }
+  .nav-bar {
+    flex-direction: column;
+  }
+  .nav-list {
+    display: none;
+    flex-direction: column;
+  }
+
+  .sect-intro {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sect-intro-title,
+  .sect-intro-desc{
+    width : 100%
+  }
+}

@@ -1,0 +1,12 @@
+{% extends 'main.html'%} 
+{% load static %} 
+{% block title %} Portfolio de Pirath - Me contacter {% endblock%}
+{% block content %}
+<h1> Me Contacter</h1>
+
+<form action="" method="POST" class="">
+    {% csrf_token %}
+    {{form}}
+    <input class="" type="submit" value="Envoyer" />
+</form>
+{% endblock content %}

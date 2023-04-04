@@ -1,0 +1,20 @@
+{% extends 'main.html'%} 
+{% load static %}
+{% block title %} Portfolio de Pirath - Messages {% endblock%}
+{% block content %}
+<h1>Messages</h1>
+<br />
+<br />
+
+<div class="">
+    {% for message in tout_messages %}
+    <div class="">
+        <h2>{{ message.subject }}</h2>
+        <p>{{ message.name }}</p>
+        <p>{{ message.email }}</p>
+        <p>{{ message.body }}</p>
+        <a href="#">Voir plus</a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}

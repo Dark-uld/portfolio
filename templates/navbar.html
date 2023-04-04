@@ -1,0 +1,23 @@
+{% load static %}
+<header>
+  <div class="nav-bar">
+   <a href="{% url 'index' %}"><img class="nav-img"  src="{% static 'images/avatar.png'%}" /></a>
+    <nav>
+      <ul class="nav-list">
+        {% if not request.resolver_match.view_name == 'index' %}
+        <li ><a href="{% url 'index' %}" class="nav-btn">Accueil</a></li>
+        {% endif %}
+        <li id="nav-real" >
+          <a onclick="scrollToElement(event, 'real')" class="nav-btn">Realisations</a>
+        </li>
+        <li><a onclick="scrollToElement(event, 'aboutme')" class="nav-btn">À propos de moi</a></li>
+        {% if request.user.is_authenticated %}
+        <li><a href="{% url 'tout_messages' %}" class="nav-btn">Inbox</a></li>
+        <li><a href="../admin/" class="nav-btn">Admin</a></li>  
+        {% else %}
+        <li><a href="{% url 'contact' %}" class="nav-btn">Me contacter</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+  </div>
+</header>
