@@ -14,11 +14,24 @@ class Projet(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
     origines = models.CharField(max_length=9, choices=ORIGINS)
+    tags = models.ManyToManyField('Tag', blank = True)
+    url_link = models.CharField(max_length = 2000, null=True, blank=True)
     github_link = models.CharField(max_length = 2000, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True) 
     def __str__ (self):
         return self.title
+    
+    class Meta:
+        ordering = ['-created_at']
 
+class Tag(models.Model):
+    name = models.CharField(max_length=200)
+    created_at = models.DateTimeField(auto_now_add=True)
+    id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
+
+    def __str__(self):
+        return self.name
+    
 class Image(models.Model):
     id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
     alter_text = models.CharField(max_length=200)

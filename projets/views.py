@@ -1,6 +1,9 @@
+from django.core import paginator
 from django.shortcuts import render, redirect
+from django.http import HttpResponse
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from .models import Projet, Message, Skill
 from django.contrib import messages
 from django.db.models import Q
@@ -33,29 +36,13 @@ def loginPage(request):
 def getIndex(request):
     projets = Projet.objects.all()
     skills = Skill.objects.all()
-    longueur = range(len(projets))
     context = {
         'projets' : projets,
-        'longueur': longueur,
-        'skills': skills
+        'skills': skills,
     }
     return render(request, 'projets/index.html', context)
 
-def getProjets(request):
-    projets = Projet.objects.all()
-    longueur = range(len(projets))
-    context = {
-        'projets' : projets,
-        'longueur': longueur
-    }
-    return render(request, 'projets/projets.html', context)
 
-def getSingleProjet(request, pk):
-    projet = Projet.objects.get(id=pk)
-    context = {
-        'projet' : projet,
-    }
-    return render(request, 'projets/single-projet.html', context)
 
 def createMessage(request):
     form = MessageForm()

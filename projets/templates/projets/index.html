@@ -2,19 +2,20 @@
 {% load static %} 
 {% block title %} Portfolio de Pirath - Page d'accueil {% endblock%}
 {% block content %}
-<section class="sect-title" style="background-image: url({% static 'images/background.jpg'%})">
+<section class="sect-title bg-image" style="background-image: url({% static 'images/background.jpg'%})">
+  <div class="sect-title-bg"></div>
   <div class="sect-title-cont">
     <h1>Pirathepan</h1>
     <p>Développeur Web</p>
   </div>
 </section>
-<section class="sect-intro" id="aboutme">
+<section id="aboutme">
+  <div class="sect-intro" >
   <div class="sect-intro-title">
     <div class="sect-intro-imgsec">
       <img class="sect-intro-img"  src="{% static 'images/avatar.png'%}" />
     </div>
     <div class="sect-intro-info">
-      <div>
         <p>
           <span class="h4">Nom:</span>
           <span>Pirathepan Rajeswaran</span>
@@ -27,7 +28,6 @@
           <span class="h4">Email:</span>
           <span>r.pirathepan94@gmail.com</span>
         </p>
-      </div>
     </div>
     <div class="sect-intro-skill">
       <h3>Skills</h3>
@@ -51,32 +51,52 @@
     autoformation depuis la fin de la formation, je recherche aujourd'hui une 1ere
     expérience professionnelle !
   </div>
+</div>
 </section>
 <section id="real">
-  <h2>Realisations</h2>
+  <div class="real-title"><h2>Realisations</h2></div>
   <div class="diapo">
     <div class="elements">
       {% for projet in projets %}
-      <div class="element" hidden="true">
-        <div class="article">
-          <div class="prj-img-cont">
+      <div class="element">
+        <div class="proj-art">
+          <div class="article">
             {% for image in projet.image_set.all%}
             {% if image.url_image %}
-            <img class="prj-img" src="{{ image.url_image }}" />
+            <a class="prj-img-cont" href="{{ image.url_image }}">         
+              <img class="prj-img" src="{{ image.url_image }}" />
+            </a>
             {% endif %}
             {% endfor %}
-          </div>
-          <div>
-            <h3>{{ projet.title }}</h3>
-            <p>{{ projet.description }}</p>
-            <p>{{ projet.origines }}</p>
+            <div class="prj-detail">
+              <div class="prj-desc">
+                  <h3>{{ projet.title }}</h3>
+                  {% if projet.tags.all %}
+                  <div class="prj-tags">
+                    {% for tag in projet.tags.all %}
+                    <span class="">
+                      <small>{{tag.name}}</small>
+                    </span>
+                    {% endfor %}
+                  </div>
+                  {% endif %}
+                  <p>{{ projet.description }}</p>
+                  <div class="prj-link">
+                    {% if projet.url_link %}
+                    <a href="{{ projet.url_link }}">url</a>
+                    {% endif %}
+                    {% if projet.github_link %}
+                    <a href="{{ projet.github_link }}">git</a>
+                    {% endif %}
+                  </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
       {% endfor %}
     </div>
-    <img src="{% static 'images/arrow_back.svg' %}" id="arrow-left"></img>
-    <img src="{% static 'images/arrow_forward.svg' %}" id="arrow-right"></img>
+    <button class="button" id="button">Plus</button>
   </div>
 </section>
 {% endblock content %}

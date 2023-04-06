@@ -7,10 +7,17 @@
         {% if not request.resolver_match.view_name == 'index' %}
         <li ><a href="{% url 'index' %}" class="nav-btn">Accueil</a></li>
         {% endif %}
+        {% if request.resolver_match.view_name == 'index' %}
+        <li><a href="#aboutme" onclick="scrollToElement(event, 'aboutme')" class="nav-btn">À propos de moi</a></li>
         <li id="nav-real" >
-          <a onclick="scrollToElement(event, 'real')" class="nav-btn">Realisations</a>
+          <a href="#real" onclick="scrollToElement(event, 'real')" class="nav-btn">Realisations</a>
         </li>
-        <li><a onclick="scrollToElement(event, 'aboutme')" class="nav-btn">À propos de moi</a></li>
+        {% else %}
+        <li><a href="{% url 'index' %}#aboutme" class="nav-btn">À propos de moi</a></li>
+        <li id="nav-real" >
+          <a href="{% url 'index' %}#real" class="nav-btn">Realisations</a>
+        </li>
+        {% endif %}
         {% if request.user.is_authenticated %}
         <li><a href="{% url 'tout_messages' %}" class="nav-btn">Inbox</a></li>
         <li><a href="../admin/" class="nav-btn">Admin</a></li>  
